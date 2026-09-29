@@ -1,0 +1,49 @@
+@startuml
+
+actor HR as "HR Advisor"
+actor Manager as "Department Manager"
+
+rectangle Database
+
+rectangle "HR System" {
+
+    usecase UC1 as "Produce salary report
+    for all employees"
+
+    usecase UC2 as "Produce salary report
+    for a department"
+
+    usecase UC3 as "Produce salary report
+    for my department"
+
+    usecase UC4 as "Produce salary report
+    for a given role"
+
+    usecase UC5 as "Add a new employee"
+
+    usecase UC6 as "View employee details"
+
+    usecase UC7 as "Update employee details"
+
+    usecase UC8 as "Delete employee details"
+
+    HR - UC1
+    HR - UC2
+    Manager - UC3
+    HR - UC4
+    HR - UC5
+    HR - UC6
+    HR - UC7
+    HR - UC8
+
+    UC1 - Database
+    UC2 - Database
+    UC3 - Database
+    UC4 - Database
+    UC5 - Database
+    UC6 - Database
+    UC7 - Database
+    UC8 - Database
+}
+
+@enduml

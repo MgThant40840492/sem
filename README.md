@@ -4,6 +4,7 @@
 
 [![LICENSE](https://img.shields.io/github/license/MgThant40840492/sem.svg?style=flat-square)](https://github.com/MgThant40840492/sem/blob/master/LICENSE)
 [![Releases](https://img.shields.io/github/release/MgThant40840492/sem/all.svg?style=flat-square)](https://github.com/MgThant40840492/sem/releases)
+[![codecov](https://codecov.io/gh/MgThant40840492/sem/graph/badge.svg?token=J5YUFRLUCG)](https://codecov.io/gh/MgThant40840492/sem)
 
 Software Engineering Methods project.
 Testing GitHub Actions Continuous Integration.

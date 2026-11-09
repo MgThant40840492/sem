@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class App {
     /**
@@ -100,16 +101,16 @@ public class App {
                             + "m.first_name AS manager_first_name, "
                             + "m.last_name AS manager_last_name "
                             + "FROM employees e "
-                            + "JOIN titles t ON e.emp_no = t.emp_no "
+                            + "LEFT JOIN titles t ON e.emp_no = t.emp_no "
                             + "AND t.to_date = '9999-01-01' "
-                            + "JOIN salaries s ON e.emp_no = s.emp_no "
+                            + "LEFT JOIN salaries s ON e.emp_no = s.emp_no "
                             + "AND s.to_date = '9999-01-01' "
-                            + "JOIN dept_emp de ON e.emp_no = de.emp_no "
+                            + "LEFT JOIN dept_emp de ON e.emp_no = de.emp_no "
                             + "AND de.to_date = '9999-01-01' "
-                            + "JOIN departments d ON de.dept_no = d.dept_no "
-                            + "JOIN dept_manager dm ON de.dept_no = dm.dept_no "
+                            + "LEFT JOIN departments d ON de.dept_no = d.dept_no "
+                            + "LEFT JOIN dept_manager dm ON de.dept_no = dm.dept_no "
                             + "AND dm.to_date = '9999-01-01' "
-                            + "JOIN employees m ON dm.emp_no = m.emp_no "
+                            + "LEFT JOIN employees m ON dm.emp_no = m.emp_no "
                             + "WHERE e.emp_no = " + ID;
 
             // Execute SQL statement
@@ -334,6 +335,24 @@ public class App {
             System.out.println(e.getMessage());
             System.out.println("Failed to get salaries by department");
             return null;
+        }
+    }
+
+    public void addEmployee(Employee emp)
+    {
+        try
+        {
+            Statement stmt = con.createStatement();
+            String strUpdate =
+                    "INSERT INTO employees (emp_no, first_name, last_name, birth_date, gender, hire_date) " +
+                            "VALUES (" + emp.emp_no + ", '" + emp.first_name + "', '" + emp.last_name + "', " +
+                            "'9999-01-01', 'M', '9999-01-01')";
+            stmt.execute(strUpdate);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to add employee");
         }
     }
 }
